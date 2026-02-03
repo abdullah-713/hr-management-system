@@ -32,7 +32,8 @@ return new class extends Migration
         //DB::statement('ALTER TABLE globals ADD CONSTRAINT singleton_constraint CHECK (id = 1)'); // Does not work with MySQL
 
         // Add a check constraint to ensure income tax is a percentage
-        DB::statement('ALTER TABLE globals ADD CONSTRAINT chk_income_tax_range CHECK (income_tax >= 0 AND income_tax <= 100)');
+        // SQLite does not support ALTER TABLE ADD CONSTRAINT in this way
+        // DB::statement('ALTER TABLE globals ADD CONSTRAINT chk_income_tax_range CHECK (income_tax >= 0 AND income_tax <= 100)');
 
     }
 
